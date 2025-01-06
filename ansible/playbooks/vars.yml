@@ -1,0 +1,5 @@
+cat <<EOF > ansible/playbooks/vars.yml
+---
+vm_name: "docker-vm"
+vm_template: "docker-template"
+EOF
