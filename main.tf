@@ -33,12 +33,12 @@ data "vsphere_virtual_machine" "template" {
 // Fetch default resource pool
 data "vsphere_resource_pool" "default_pool" {
   datacenter_id = data.vsphere_datacenter.dc.id
-  name          = "pool1"  # Default resource pool name in most vSphere environments
+  name          = "pool1"  // Default resource pool name in most vSphere environments
 }
 
 resource "vsphere_virtual_machine" "vm" {
   name             = var.vm_name
-  resource_pool_id = data.vsphere_resource_pool.default_pool.id  # Updated to use the resource pool from the data source
+  resource_pool_id = data.vsphere_resource_pool.default_pool.id  // Updated to use the resource pool from the data source
   datastore_id     = data.vsphere_datastore.datastore.id
 
   num_cpus = var.vm_num_cpus
