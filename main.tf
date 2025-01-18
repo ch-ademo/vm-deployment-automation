@@ -3,7 +3,7 @@ provider "vsphere" {
   password       = "YLFXK66q1DPDyU8W!"  
   vsphere_server = "192.168.7.90"        
 
-  # If using a self-signed certificate
+  // If using a self-signed certificate
   allow_unverified_ssl = true
 }
 
