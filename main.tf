@@ -1,36 +1,36 @@
 provider "vsphere" {
-  user           = "adam@vsphere.local"  # Your vSphere username
-  password       = "YLFXK66q1DPDyU8W!"  # Your vSphere password
-  vsphere_server = "192.168.7.90"        # Your vSphere server IP address
+  user           = "adam@vsphere.local"  
+  password       = "YLFXK66q1DPDyU8W!"  
+  vsphere_server = "192.168.7.90"        
 
   # If using a self-signed certificate
   allow_unverified_ssl = true
 }
 
-# Datacenter resource
+// Datacenter resource
 data "vsphere_datacenter" "dc" {
   name = var.datacenter
 }
 
-# Datastore resource
+// Datastore resource
 data "vsphere_datastore" "datastore" {
   name          = var.datastore
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-# Network resource
+// Network resource
 data "vsphere_network" "network" {
   name          = var.vm_network
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-# Template resource
+// Template resource
 data "vsphere_virtual_machine" "template" {
   name          = var.template
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-# Fetch default resource pool
+// Fetch default resource pool
 data "vsphere_resource_pool" "default_pool" {
   datacenter_id = data.vsphere_datacenter.dc.id
   name          = "pool1"  # Default resource pool name in most vSphere environments
